@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="payment_provider_form" model="ir.ui.view">
+        <field name="name">Tap Provider Form</field>
+        <field name="model">payment.provider</field>
+        <field name="inherit_id" ref="payment.payment_provider_form"/>
+        <field name="arch" type="xml">
+            <group name="provider_credentials" position="inside">
+                <field
+                    string="Secret Key"
+                    name="tap_secret_key"
+                    invisible="code != 'tap'"
+                    required="code == 'tap' and is_live"
+                    widget="password"
+                />
+                <field
+                    string="Merchant ID"
+                    name="tap_merchant_id"
+                    invisible="code != 'tap'"
+                />
+            </group>
+        </field>
+    </record>
+
+</odoo>
